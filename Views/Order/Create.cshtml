@@ -1,0 +1,52 @@
+﻿@model List<CafeManagementSystem.Models.OrderItem>
+@using Microsoft.AspNetCore.Mvc.Rendering
+
+<h2>Create New Order</h2>
+
+<form asp-action="Create" method="post">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody id="orderItems">
+            <tr>
+                <td>
+                    <select name="items[0].ProductId" class="form-control" asp-items="ViewBag.Products"></select>
+                </td>
+                <td>
+                    <input type="number" name="items[0].Quantity" class="form-control" value="1" min="1" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button type="button" class="btn btn-secondary" onclick="addRow()">Add More</button>
+    <br /><br />
+    <button type="submit" class="btn btn-success">Place Order</button>
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+</form>
+
+<script>
+    let rowIndex = 1;
+    function addRow() {
+        const tbody = document.getElementById("orderItems");
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>
+                <select name="items[${rowIndex}].ProductId" class="form-control">
+                    @foreach (var p in ViewBag.Products as Microsoft.AspNetCore.Mvc.Rendering.SelectList)
+                    {
+                            <option value="@p.Value">@p.Text</option>
+                    }
+                </select>
+            </td>
+            <td>
+                <input type="number" name="items[${rowIndex}].Quantity" class="form-control" value="1" min="1"/>
+            </td>
+        `;
+        tbody.appendChild(row);
+        rowIndex++;
+    }
+</script>
