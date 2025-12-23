@@ -10,10 +10,21 @@
         <span asp-validation-for="ProductName" class="text-danger"></span>
     </div>
 
-    <div class="mb-3">
+    @* <div class="mb-3">
         <label>Category</label>
         <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.Categories"></select>
+    </div> *@
+    <div class="mb-3">
+        <label>Category</label>
+        <select asp-for="CategoryId"
+                class="form-control"
+                asp-items="ViewBag.Categories">
+            <option value="">-- Select Category --</option>
+        </select>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
     </div>
+
+
 
     <div class="mb-3">
         <label>Price</label>

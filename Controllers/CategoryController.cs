@@ -1,11 +1,19 @@
 ﻿using CafeManagementSystem.Data;
 using CafeManagementSystem.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CafeManagementSystem.Controllers
+
+    
 {
+
+    [Authorize(Roles = "Admin")]
     public class CategoryController : Controller
+
     {
+
+
         private readonly ApplicationDbContext _context;
         public CategoryController(ApplicationDbContext context)
         {

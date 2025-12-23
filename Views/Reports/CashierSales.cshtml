@@ -1,0 +1,17 @@
+﻿@model IEnumerable<dynamic>
+
+<h2>👤 Cashier Wise Sales</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Cashier</th>
+        <th>Total Sales</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Cashier</td>
+            <td>₹ @item.Total</td>
+        </tr>
+    }
+</table>

@@ -1,10 +1,13 @@
-using System.Diagnostics;
 using Cafeee.Models;
 using CafeManagementSystem.Data; // your DbContext namespace
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 namespace Cafeee.Controllers
 {
+
+    [Authorize(Roles = "Admin,Cashier")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

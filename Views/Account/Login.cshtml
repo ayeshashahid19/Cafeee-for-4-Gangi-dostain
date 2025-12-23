@@ -1,0 +1,42 @@
+﻿@model CafeManagementSystem.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h2>Login</h2>
+
+<form asp-action="Login" method="post" autocomplete="off">
+    @Html.AntiForgeryToken()
+
+    <div>
+        <label asp-for="Username"></label>
+        <input asp-for="Username"
+               autocomplete="off"
+               value="" />
+    </div>
+
+    <div>
+        <label asp-for="Password"></label>
+        <input asp-for="Password"
+               type="password"
+               autocomplete="new-password"
+               value="" />
+    </div>
+
+    <button type="submit">Login</button>
+
+    <p style="margin-top:10px;">
+        New user?
+        <a asp-action="Register">Register here</a>
+    </p>
+
+    <div style="color:red">
+        @Html.ValidationSummary()
+    </div>
+</form>
+
+<!-- 🔐 Disable page cache -->
+<meta http-equiv="Cache-Control" content="no-store" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
